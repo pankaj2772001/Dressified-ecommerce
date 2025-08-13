@@ -1,0 +1,17 @@
+:root{
+  --yellow: #FFD447;
+  --teal: #00B8B0;
+  --pink: #FF4F8B;
+  --purple: #7B3EFF;
+  --orange: #FF6B2D;
+  --white: #FAFAFA;
+  --ink: #1E1E1E;
+
+  --border: #E8E8E8;
+  --card-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+.btn-primary{ background: var(--yellow); color: var(--ink); border-color: var(--yellow); }
+.btn-primary:hover{ background: var(--pink); color:#fff; border-color: var(--pink); }
+.btn-secondary{ background: var(--teal); color:#fff; border-color: var(--teal); }
+.btn-secondary:hover{ background: var(--purple); }

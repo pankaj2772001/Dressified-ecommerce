@@ -1,0 +1,20 @@
+@import "bootstrap/scss/functions";
+
+// Color overrides
+$primary:   #FFD447; // Yellow
+$secondary: #00B8B0; // Teal
+$danger:    #FF4F8B; // Pink
+$info:      #7B3EFF; // Purple
+$warning:   #FF6B2D; // Orange
+$light:     #FAFAFA; // Soft White
+$dark:      #1E1E1E; // Ink
+
+$theme-colors: (
+  "primary":   $primary,
+  "secondary": $secondary,
+  "danger":    $danger,
+  "info":      $info,
+  "warning":   $warning,
+  "light":     $light,
+  "dark":      $dark
+);
