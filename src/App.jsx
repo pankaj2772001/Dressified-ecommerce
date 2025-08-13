@@ -16,7 +16,7 @@ import Section from "./components/Section";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Profile from "./pages/Profile";
-import CheckOut from "./pages/Checkout";
+import CheckOut from "./pages/CheckOut";
 import { ToastContainer, toast } from 'react-toastify';
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
