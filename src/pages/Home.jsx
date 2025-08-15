@@ -17,7 +17,7 @@ const Home = () => {
         < main className='text-center py-3'>
 <div className='container '>
     <div id="carouselExampleRide" className='carousel slide' data-bs-ride="true">
-                <div className='carousel-inner'>
+                <div className='carousel-inner rounded-4'>
 
                     <div className='carousel-item active'>
                         <img src="https://placehold.co/1200x400?text=First+Image" alt="First-Image" className='img-fluid d-block w-100 rounded-4' />

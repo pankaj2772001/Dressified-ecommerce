@@ -59,22 +59,22 @@ const Cart = () => {
 
 
     return (
-        <div className="d-flex">
+        <div className="d-flex justify-content-evenly row mt-5">
 
-            <div style={{ width: "50vw" }}>
-                {cartItems ? cartItems?.map(cartItem => {
+            <div  className=" col-md-6">
+                {cartItems && cartItems.length > 0 ? cartItems?.map(cartItem => {
 
                     return (
-                        <div>
-                            <div className=" d-flex">
+                        
+                            <div className="row border m-3">
 
-                                <div className="card mt-2">
+                                <div className="card col-md-6">
 
-                                    <img src={`https://placehold.co/400x260?text=${cartItem.product.title}`} alt="" />
+                                    <img src={cartItem.product.image} alt="" className="img-fluid" />
 
 
                                 </div>
-                                <div>
+                                <div className="col-md-6">
                                     <button onClick={() => removeCartItem(cartItem._id)}>Remove From Cart</button>
                                     <button onClick={() => handleMoveToWishlist(cartItem.product._id, cartItem._id)}>Move To Wishlist</button>
                                     <div>Qty: <button onClick={() => updateCartItemQty(cartItem._id, "decreement")}>-</button>{cartItem.quantity}<button onClick={() => updateCartItemQty(cartItem._id, "increement")}>+</button></div>
@@ -84,21 +84,23 @@ const Cart = () => {
                                 </div>
                             </div>
 
-                        </div>
+                        
                     )
                 }) :
                     <div>
-                        No Items Presenet In Cart
+                        <h5>🛒 Cart is Empty! Please Add Products</h5>
                     </div>}
 
             </div>
 
-            <div style={{ width: "50vw" }}>
-                <h3>My Bag ( {cart.item?.length} {cart.item?.length > 1 ? "items" : "item"} )</h3>
+            <div className="col-md-4">
+
+                <div className="card p-4">
+                    <h3>My Bag ( {cart.item?.length} {cart.item?.length > 1 ? "items" : "item"} )</h3>
                 <hr />
                 <h5>Price Summary</h5>
                 <h5>Subtotal: {subTotal}</h5>
-                <p>-----------------------------------------------------------------------------------------------</p>
+                <hr />
                 <h5>Total MRP (Incl. of taxes):  {cartItems?.reduce((acc, curr) => {
 
                     acc += curr.product.originalPrice * curr.quantity
@@ -116,6 +118,8 @@ const Cart = () => {
                 <h4>Total Amount: {totalAmount}</h4>
 
                 <Link   to={ cartItems?.length === 0 ? "" : "/checkout"} ><button className="btn btn-primary" onClick={handleCheckoutBtn} disabled = {cartItems?.length === 0}>Proceed To Checkout</button></Link>
+                </div>
+                
             </div>
 
 

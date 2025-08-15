@@ -12,7 +12,6 @@ const Nav = () => {
 
     const navigate = useNavigate()
 
-
     function searchSuggestions(event){
 
         const value = event.target.value.toLowerCase()
@@ -25,9 +24,7 @@ const Nav = () => {
             return
         }
       const matchedProducts = products?.filter((item) =>
-      item.category.toLowerCase().includes(value) ||
-      item.brand.toLowerCase().includes(value) ||
-      item.title.toLowerCase().includes(value)
+      item.category.toLowerCase().includes(value)
     )
 
     setSuggestions(matchedProducts || [])
@@ -46,11 +43,11 @@ const Nav = () => {
                 <ul>
 
                     {suggestions.length > 0 ? suggestions?.map(item => <li onClick={() => { 
-                        navigate(`/product/${item._id}`); 
-                        setSuggestions([]) 
+                        navigate(`/section/${item.section}/category/${item.category}`); 
                         setQuery('')
+                        setSuggestions([]) 
                         }}>
-                    <img src={item.image} height={"50px"}/> {item.title} - {item.brand} <br/> <h6>in {item.section}</h6>
+                    <span> {item.category} - <b>in {item.section}</b></span> 
                     
                         
                          </li>) : query ? <li>No Product Found</li> : null}

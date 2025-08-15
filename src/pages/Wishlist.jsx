@@ -11,6 +11,8 @@ const Wishlist = () => {
 
     const [selectedItem, setSelectedItem] = useState(null)
 
+    console.log(wishList)
+
 
     const handleAddToCartClick = (item) => {
 
@@ -29,7 +31,7 @@ const Wishlist = () => {
 
         setPromptVisible(false)
 
-        removeWishList(selectedItem._id)
+        removeWishList(selectedItem.product._id)
 
     }
 
@@ -47,7 +49,7 @@ const Wishlist = () => {
                <Link to={`/product/${item.product._id}`}>
                <p>{item.product.title}</p>
                </Link>
-               <button  onClick={() => removeWishList(item._id)}>Remove From WishList</button>
+               <button  onClick={() => removeWishList(item.product._id)}>Remove From WishList</button>
                <button onClick={() => handleAddToCartClick(item)}>Add To Cart</button>
 
                {
@@ -72,7 +74,14 @@ const Wishlist = () => {
     })
 }
         
+
+        <div className="border m-5 p-5 rounded">
+
+            hii
         </div>
+        </div>
+
+        
     )
 }
 
