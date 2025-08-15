@@ -114,14 +114,15 @@ const ProductListing = () => {
                             <Link to={`/product/${prod._id}`}>
 
                                 <div >
-                                    <img src={prod.image} alt="" className="img-fluid border" />
+                                    <img src={prod.image} alt="" className="img-fluid border-bottom rounded-top" />
                                 </div>
+                                
 
 
                             </Link>
 
                             <div className="p-2 lh-lg">
-                                {wishList.find((item) => item.product._id === prod._id) ? <GoHeartFill onClick={() => removeWishList(prod._id)} className="text-danger">Remove From WishList</GoHeartFill> : <GoHeart onClick={() => handleAddtoWishList(prod._id)}>Add To WishList</GoHeart>}
+                                {wishList.find((item) => item.product._id === prod._id) ? <GoHeartFill onClick={() => removeWishList(prod._id)} className="text-danger fs-3"/> : <GoHeart className="fs-3" onClick={() => handleAddtoWishList(prod._id)}/>}
 
                                 
                             <div>{prod.section} {prod.title}</div>
