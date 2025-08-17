@@ -1,18 +1,24 @@
 import { useContext } from "react"
 import { useParams } from "react-router"
 import StoreProvider from "../contexts/StoreProvider"
-import { useState } from "react"
+import { GoHeartFill } from "react-icons/go";
+import { GoHeart } from "react-icons/go";
+import secure from "../assets/secure.png"
+import dreturn from "../assets/return.png"
+import original from "../assets/original.png"
+import { RiShoppingBag2Line } from "react-icons/ri";
+
 
 const ProductDetail = () => {
 
-    const {productId} = useParams()
+    const { productId } = useParams()
 
-    const {products, addToCart, size, setSize} = useContext(StoreProvider)
+    const { products, addToCart, size, setSize, addToWishList, wishList, removeWishList } = useContext(StoreProvider)
 
 
-    
 
-    
+
+
 
     const productDetail = products?.find(prod => prod._id === productId)
 
@@ -20,36 +26,87 @@ const ProductDetail = () => {
 
 
 
-    return(
-       
-            <div className="container">
-                {productDetail && <div className="d-flex">
-                    <div style={{width: "50vw"}}>
-                        <img src={productDetail.image} alt="" />
-                    </div>
-                    <div style={{width: "40vw"}}>
-                    <h4>{productDetail.brand}</h4>
+    return (
+
+        <div className="container my-2">
+            {productDetail && <div className="row" >
+                <div className="col-md-6 my-3">
+                    <img src={productDetail.image} alt="" className="img-fluid" />
+                </div>
+                <div className="col-md-6 my-3">
+                   
+                        <div className="mx-2">
+                            <h4>{productDetail.brand}</h4>
                     <p>{productDetail.title}</p>
                     <hr />
-                    <span><h5 style={{display: "inline"}}>₹ {productDetail.price}</h5> &nbsp;MRP <strike>₹{productDetail.originalPrice}</strike> &nbsp;<h5 style={{display: "inline"}}>({productDetail.discountPercentage}% OFF)</h5> </span>
+                    <span><h5 style={{ display: "inline" }}>₹ {productDetail.price}</h5> &nbsp;MRP <strike>₹{productDetail.originalPrice}</strike> &nbsp;<h5 style={{ display: "inline" }}>({productDetail.discountPercentage}% OFF)</h5> </span>
 
-                    
+
                     <div className="mt-4">
                         <h6>Please select a size.</h6>
                         <p className="mt-3">
-                            {productDetail.sizes?.map(size => <button onClick={() => setSize(size)}  className="me-3  rounded-5" style={{width: "40px", height: "40px"}}>{size}</button>)}
+                            {productDetail.sizes?.map(size => <button onClick={() => setSize(size)} className="me-3  rounded-4 bg-light" style={{ width: "40px", height: "40px" }}>{size}</button>)}
                         </p>
-                        
+                        </div>
+                         
+
                     </div>
-                    <button onClick={() => addToCart(productDetail._id, size)}>Add to cart</button>
-                
+                    <div className="row mx-1">
+                        <span className="me-2 btn border py-2 px-5 bg-primary" onClick={() => addToCart(productDetail._id, size)}> <RiShoppingBag2Line /> ADD TO BAG</span>
+
+
+                        {wishList?.find((item) => item.product?._id === productDetail._id) ?
+                            <span onClick={() => removeWishList(productDetail._id)} className="border btn py-2 px-5 mt-2"><GoHeartFill className="text-danger" /> WISHLISTED</span> :
+
+                            <span onClick={() => addToWishList(productDetail._id)} className="border btn py-2 px-5 mt-2"><GoHeart /> WISHLIST</span>}
+
+
+
+
                     </div>
-                
-                </div>} 
-              
-            </div>
-            
-        
+
+                    
+                    <div className="mx-2">
+                        <hr />
+                        <h5>Description:</h5>
+                    <ul className="list-group">
+
+                        {productDetail.description?.map(desc => <li className="list-group-item">
+                            {desc}
+                        </li>)}
+                    </ul>
+
+                    <hr />
+
+                    <div className="d-flex justify-content-between text-center mx-3">
+                        <div>
+                            <img src={secure} alt="" className="img-fluid" width={"50rem"} height={"50rem"} />
+                            <p>100% SECURE<br />PAYMENT</p>
+                        </div>
+                        <div >
+                            <img src={dreturn} alt="" className="img-fluid" width={"50rem"} height={"50rem"} />
+                            <p>EASY RETURNS &<br />INSTANT REFUNDS</p>
+                        </div>
+                        <div>
+                            <img src={original} alt="" className="img-fluid" width={"50rem"} height={"50rem"} />
+                            <p>100% GENUINE<br />PRODUCT</p>
+                        </div>
+                    </div>
+
+                    </div>
+                    
+
+
+
+
+                    
+                                   </div>
+
+            </div>}
+
+        </div>
+
+
     )
 }
 

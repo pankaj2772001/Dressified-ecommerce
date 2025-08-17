@@ -81,26 +81,31 @@ const ProductListing = () => {
 
 
     return (
-        <div className="row py-4 mx-2">
+        <div className="row py-4 px-3 mx-3">
 
-            <div style={{ border: "1px solid black" }} className="p-3 col-md-3">
+            <div className="col-md-3 mb-4">
+                <div className="border border-2 p-3 rounded rounded-2">
+                    <div className=" d-flex justify-content-between align-items-center">
+                        <h3>Filters</h3>
+                <button className="btn border btn-sm" onClick={handleBtn}>Clear Filters</button>
+                    </div>
+                    
+                <hr />
 
-                <h3>Filter Side Bar</h3>
-                <button onClick={handleBtn}>Clear Filters</button><br />
-
-                <label>Category</label><br />
+                <h6>Categories</h6>
 
                 {categories && categories?.map(category => <>
 
-                    <input type="checkbox" onChange={handleCheckbox} value={category} checked={selectedCategory.includes(category)} /> {category} <br />
+                    <input  type="checkbox" onChange={handleCheckbox} value={category} checked={selectedCategory.includes(category)} /> {category} <br />
                 </>)}
 
                 <hr />
 
-                <h3>Sort by</h3>
-                <input type="radio" name="filterPrice" onChange={() => setSortType("asc")} checked={sortType === "asc"} /> Price -- Low to High<br />
-                <input type="radio" name="filterPrice" onChange={() => setSortType("des")} checked={sortType === "des"} /> Price -- High to Low
-                <label></label>
+                <h6>Sort by Price</h6>
+                <input type="radio" name="filterPrice" onChange={() => setSortType("asc")} checked={sortType === "asc"} /> Low to High<br />
+                <input type="radio" name="filterPrice" onChange={() => setSortType("des")} checked={sortType === "des"} /> High to Low
+                </div>
+                
             </div>
 
 
@@ -109,24 +114,35 @@ const ProductListing = () => {
                 <div className="row">
                     
                     {sortedProducts?.map(prod => <div className="col-md-4 mb-5">
-                        <div className="card">
+                        <div className="card" >
 
                             <Link to={`/product/${prod._id}`}>
 
-                                <div >
-                                    <img src={prod.image} alt="" className="img-fluid border-bottom rounded-top" />
+                                <div className="text-center" >
+                                    <img src={prod.image} alt="" className="img-fluid border-bottom rounded-top" style={{height: "20rem", width: "100vw"}}/>
                                 </div>
                                 
 
 
                             </Link>
 
-                            <div className="p-2 lh-lg">
-                                {wishList.find((item) => item.product._id === prod._id) ? <GoHeartFill onClick={() => removeWishList(prod._id)} className="text-danger fs-3"/> : <GoHeart className="fs-3" onClick={() => handleAddtoWishList(prod._id)}/>}
+                            <div className="p-3 lh-lg d-flex justify-content-between ">
 
+                                 <div>
+                                    <div>{prod.section} {prod.title}</div>
+                                    <div>
+                                        <span><b>₹{prod.price}</b></span> <span><strike>₹{prod.originalPrice}</strike></span> <span><b>{prod.discountPercentage}% off</b></span>
+                                    </div>
                                 
-                            <div>{prod.section} {prod.title}</div>
-                                <span><b>₹{prod.price}</b></span> <span><strike>₹{prod.originalPrice}</strike></span> <span><b>{prod.discountPercentage}% off</b></span>
+                                </div>
+
+                                <div className="mt-4">
+                                    {wishList?.find((item) => item.product?._id === prod._id) ? <GoHeartFill onClick={() => removeWishList(prod._id)} className="text-danger fs-2"/> : <GoHeart className="fs-2" onClick={() => handleAddtoWishList(prod._id)}/>}
+                                </div>
+                                
+
+                               
+                            
                                 
                             </div>
 

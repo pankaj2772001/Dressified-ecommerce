@@ -1,7 +1,5 @@
 const Footer = () => {
 
-
-
 return(
 
     <footer className="py-2 bg-info mt-5" >

@@ -61,7 +61,7 @@ const StoreContent = () => {
 
     try {
 
-      const response = await fetch('https://dressified-ecommerce-backend.vercel.app/wishlist')
+      const response = await fetch('http://dressified-ecommerce-backend.vercel.app/wishlist')
 
       const data = await response.json()
 
@@ -365,15 +365,18 @@ const checkOut = async (checkOutItems) => {
 
         const filteredProducts = products?.filter((products => products.section === sectionName ))
 
-    console.log(filteredProducts)
 
     const categories = filteredProducts?.map(product => product.category)
+
+    
 
     const uniqueCategories = [...new Set(categories)]
 
     return uniqueCategories
 
     }
+
+ 
 
 
   return (

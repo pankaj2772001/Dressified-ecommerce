@@ -41,7 +41,6 @@ const Wishlist = () => {
 {
     wishList?.map(item => {
 
-        console.log(item)
 
 
         return(
@@ -55,7 +54,7 @@ const Wishlist = () => {
                {
                     isPromptVisible && item._id === selectedItem._id && <div className="text-center">
 
-                            {item.product.sizes.map(size => {
+                            {item.product?.sizes.map(size => {
 
                                 return(
 
@@ -75,10 +74,6 @@ const Wishlist = () => {
 }
         
 
-        <div className="border m-5 p-5 rounded">
-
-            hii
-        </div>
         </div>
 
         
