@@ -61,7 +61,7 @@ const StoreContent = () => {
 
     try {
 
-      const response = await fetch('http://dressified-ecommerce-backend.vercel.app/wishlist')
+      const response = await fetch('https://dressified-ecommerce-backend.vercel.app/wishlist')
 
       const data = await response.json()
 
