@@ -39,13 +39,13 @@ const ProductDetail = () => {
                             <h4>{productDetail.brand}</h4>
                     <p>{productDetail.title}</p>
                     <hr />
-                    <span><h5 style={{ display: "inline" }}>₹ {productDetail.price}</h5> &nbsp;MRP <strike>₹{productDetail.originalPrice}</strike> &nbsp;<h5 style={{ display: "inline" }}>({productDetail.discountPercentage}% OFF)</h5> </span>
+                    <span><h5 style={{ display: "inline" }}>₹{productDetail.price}</h5> &nbsp;<span><strike className="text-dark text-opacity-75">₹{productDetail.originalPrice}</strike></span> &nbsp;<h5 className="text-danger" style={{ display: "inline" }}>({productDetail.discountPercentage}% OFF)</h5> </span>
 
 
                     <div className="mt-4">
                         <h6>Please select a size.</h6>
                         <p className="mt-3">
-                            {productDetail.sizes?.map(size => <button onClick={() => setSize(size)} className="me-3  rounded-4 bg-light" style={{ width: "40px", height: "40px" }}>{size}</button>)}
+                            {productDetail.sizes?.map(siz => <button onClick={() => setSize(siz)}  className= {`me-3 rounded-4 ${siz === size ? "bg-secondary" : "bg-light"}`}   style={{ width: "40px", height: "40px"}}>{siz}</button>)}
                         </p>
                         </div>
                          

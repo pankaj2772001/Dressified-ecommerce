@@ -22,6 +22,7 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 
 
+
 const StoreContent = () => {
 
   const [products, setProducts] = useState()
@@ -36,7 +37,7 @@ const StoreContent = () => {
     console.log(checkOutItems)
 
 
-
+console.log
 
   useEffect(() => {
 
@@ -355,6 +356,8 @@ const checkOut = async (checkOutItems) => {
 }
   const location = useLocation()
 
+  console.log(location)
+
   const hideSectionRoutes = ["/cart", "/wishlist", '/user', '/checkout', '/home']
 
   const shouldHideSection = hideSectionRoutes.some((path) => location.pathname.startsWith(path))
@@ -376,6 +379,15 @@ const checkOut = async (checkOutItems) => {
 
     }
 
+
+    useEffect(() => {
+
+      setSize(null)
+
+
+    }, [location.pathname])
+
+    console.log(size)
  
 
 
