@@ -382,7 +382,7 @@ const checkOut = async (checkOutItems) => {
 
     useEffect(() => {
 
-      setSize(null)
+      setSize("")
 
 
     }, [location.pathname])
