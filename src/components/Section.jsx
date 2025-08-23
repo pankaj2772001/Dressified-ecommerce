@@ -1,9 +1,13 @@
 
+import { useContext } from "react"
 import { useNavigate } from "react-router"
+import StoreProvider from "../contexts/StoreProvider"
 
 const Section = () => {
 
     const navigate = useNavigate()
+
+    
 
     function handleClick(sectionName){
 
@@ -13,7 +17,7 @@ const Section = () => {
 
     return (
               
-        <div className="d-flex justify-content-evenly">
+        <div className="d-flex justify-content-evenly my-3">
 
             <div onClick={() => handleClick("Mens")}>
                 Mens

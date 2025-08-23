@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react"
 import StoreProvider from "../contexts/StoreProvider"
 import { useParams } from "react-router"
 import { Link } from "react-router"
-import { GoHeartFill  } from "react-icons/go";
-import { GoHeart  } from "react-icons/go";
+import { GoHeartFill } from "react-icons/go";
+import { GoHeart } from "react-icons/go";
 
 
 const ProductListing = () => {
@@ -55,7 +55,8 @@ const ProductListing = () => {
     }
 
 
-    const filterProducts = products?.filter((items) => selectedCategory.includes(items.category) && items.section === sectionName) || []
+    const filterProducts = selectedCategory.length === 0 ? products?.filter((item) => item.section === sectionName) : products?.filter((items) => selectedCategory.includes(items.category) && items.section === sectionName) || []
+
 
 
     const sortedProducts = [...filterProducts].sort((a, b) => {
@@ -87,63 +88,63 @@ const ProductListing = () => {
                 <div className="border border-2 p-3 rounded rounded-2">
                     <div className=" d-flex justify-content-between align-items-center">
                         <h3>Filters</h3>
-                <button className="btn border btn-sm" onClick={handleBtn}>Clear Filters</button>
+                        <button className="btn border btn-sm" onClick={handleBtn}>Clear Filters</button>
                     </div>
-                    
-                <hr />
 
-                <h6>Categories</h6>
+                    <hr />
 
-                {categories && categories?.map(category => <>
+                    <h6>Categories</h6>
 
-                    <input  type="checkbox" onChange={handleCheckbox} value={category} checked={selectedCategory.includes(category)} /> {category} <br />
-                </>)}
+                    {categories && categories?.map(category => <>
 
-                <hr />
+                        <input type="checkbox" onChange={handleCheckbox} value={category} checked={selectedCategory.includes(category)} /> {category} <br />
+                    </>)}
 
-                <h6>Sort by Price</h6>
-                <input type="radio" name="filterPrice" onChange={() => setSortType("asc")} checked={sortType === "asc"} /> Low to High<br />
-                <input type="radio" name="filterPrice" onChange={() => setSortType("des")} checked={sortType === "des"} /> High to Low
+                    <hr />
+
+                    <h6>Sort by Price</h6>
+                    <input type="radio" name="filterPrice" onChange={() => setSortType("asc")} checked={sortType === "asc"} /> Low to High<br />
+                    <input type="radio" name="filterPrice" onChange={() => setSortType("des")} checked={sortType === "des"} /> High to Low
                 </div>
-                
+
             </div>
 
 
 
             <div className="col-md-9">
                 <div className="row">
-                    
+
                     {sortedProducts?.map(prod => <div className="col-md-4 mb-5">
                         <div className="card" >
 
                             <Link to={`/product/${prod._id}`}>
 
-                                <div className="text-center" >
-                                    <img src={prod.image} alt="" className="img-fluid border-bottom rounded-top" style={{height: "20rem", width: "100vw"}}/>
+                                <div>
+                                    <img src={prod.image} alt="" className="img-fluid border-bottom rounded-top h-100 w-100" style={{ objectFit: "cover" }} />
                                 </div>
-                                
+
 
 
                             </Link>
 
                             <div className="p-3 lh-lg d-flex justify-content-between ">
 
-                                 <div>
+                                <div>
                                     <div>{prod.section} {prod.title}</div>
                                     <div>
                                         <span><b>₹{prod.price}</b></span> <span><strike>₹{prod.originalPrice}</strike></span> <span><b>{prod.discountPercentage}% off</b></span>
                                     </div>
-                                
+
                                 </div>
 
                                 <div className="mt-4">
-                                    {wishList?.find((item) => item.product?._id === prod._id) ? <GoHeartFill onClick={() => removeWishList(prod._id)} className="text-danger fs-2"/> : <GoHeart className="fs-2" onClick={() => handleAddtoWishList(prod._id)}/>}
+                                    {wishList?.find((item) => item.product?._id === prod._id) ? <GoHeartFill onClick={() => removeWishList(prod._id)} className="text-danger fs-2" /> : <GoHeart className="fs-2" onClick={() => handleAddtoWishList(prod._id)} />}
                                 </div>
-                                
 
-                               
-                            
-                                
+
+
+
+
                             </div>
 
                         </div>
