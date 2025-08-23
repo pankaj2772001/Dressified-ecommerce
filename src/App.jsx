@@ -17,7 +17,7 @@ import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Profile from "./pages/Profile";
 import CheckOut from "./pages/CheckOut";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 
@@ -149,7 +149,17 @@ console.log
 
   }
 
-  const notify = (msg) => toast(msg)
+  const notify = (msg) => toast(msg, {
+position: "bottom-right",
+autoClose: 700,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: false,
+draggable: true,
+progress: undefined,
+theme: "light",
+transition: Bounce,
+})
 
   const addToCart = async (itemId, size) => {
 
@@ -410,7 +420,19 @@ const checkOut = async (checkOutItems) => {
         <Route path="/home" element={<Home/>}/>
 
       </Routes>
-      <ToastContainer/>
+      <ToastContainer
+      position="bottom-right"
+autoClose={700}
+hideProgressBar={false}
+newestOnTop
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover={false}
+theme="light"
+transition={Bounce}
+      />
       <Footer/>
       
 

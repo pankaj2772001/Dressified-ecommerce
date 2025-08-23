@@ -10,6 +10,7 @@ const Profile = () => {
    const [addressBtnVisibilty, setAddressBtnVisibilty] = useState(false)
    const [isEditing, setIsEditing] = useState(false)
 
+   console.log(address)
 
     const [formData, setFormData] = useState({
 
@@ -100,7 +101,7 @@ const Profile = () => {
 
                 {
 
-                    address ? address?.map(add => (
+                    address.length > 0 ? address?.map(add => (
                         <div className="card border">
                             <p>{add.fullName}</p>
                             <p>{add.phoneNumber}</p>
