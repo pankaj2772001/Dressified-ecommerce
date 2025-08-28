@@ -6,7 +6,7 @@ import { FaHeart } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
 import { FaShoppingCart } from "react-icons/fa";
-import Cart from "../pages/Cart";
+import Logo from "../assets/Dressified1.png"
 
 
 
@@ -45,24 +45,23 @@ const Nav = () => {
             <nav className="navbar navbar-expand-lg container">
                 <div className="container-fluid">
 
-                     <Link className="nav-link" to={"/home"}> <h2 className=" text-dark mb-0 h1">Dressified</h2> </Link>
+                     <Link className="nav-link d-flex align-items-center" to={"/home"}> <img src={Logo} alt="Brand" width={"125rem"}/> </Link>
+
+
+
+
+<div>
+    <button class="navbar-toggler mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
 
 
 
 
-        
-                {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> */}
-
-
-
-
-
-                {/* <div className="collapse navbar-collapse" id="navbarSupportedContent"> */}
+                <div className="collapse navbar-collapse mt-3" id="navbarSupportedContent">
                     <ul className="navbar-nav">
-                        <li className="nav-item">
+                        <li className="nav-item me-5">
 
                             <div className="input-group">
                                 <span class="input-group-text" ><CiSearch className="fs-5" /></span>
@@ -115,7 +114,10 @@ const Nav = () => {
                     </ul>
 
                 </div>
-                {/* </div> */}
+                                    
+</div>
+        
+                </div>
 
 
 

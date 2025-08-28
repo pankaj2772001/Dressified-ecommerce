@@ -5,6 +5,9 @@ import mens from '../assets/mens.jpg'
 import womens from '../assets/womens.jpg'
 import kids from '../assets/kids.jpg'
 import { useNavigate } from 'react-router'
+import img1 from '../assets/img1.png'
+import img2 from '../assets/img2.png'
+import img3 from '../assets/img3.png'
 
 const Home = () => {
 
@@ -15,18 +18,18 @@ const Home = () => {
     return (
 
         < main className='text-center py-3'>
-<div className='container '>
+<div className='container'>
     <div id="carouselExampleRide" className='carousel slide' data-bs-ride="true">
                 <div className='carousel-inner rounded-4'>
 
                     <div className='carousel-item active'>
-                        <img src="https://placehold.co/1200x400?text=First+Image" alt="First-Image" className='img-fluid d-block w-100 rounded-4' />
+                        <img src={img1} alt="First-Image" className='img-fluid d-block w-100  rounded-4'/>
                     </div>
                     <div className='carousel-item'>
-                        <img src="https://placehold.co/1200x400?text=Second+Image" alt="Second-Image" className='img-fluid d-block w-100 rounded-4' />
+                        <img src={img2} alt="Second-Image" className='img-fluid d-block w-100 rounded-4' />
                     </div>
                     <div className='carousel-item'>
-                        <img src="https://placehold.co/1200x400?text=Third+Image" alt="Third-Image" className='img-fluid d-block w-100 rounded-4' />
+                        <img src={img3} alt="Third-Image" className='img-fluid d-block w-100 rounded-4' />
                     </div>
                 </div>
 
@@ -40,7 +43,7 @@ const Home = () => {
                 </button>
             </div>
 
-            <h2 className='my-4 text-info'>SHOP IN</h2>
+            <h2 className='my-4 text-info'> SHOP FOR</h2>
 
 
             <div className='row'>
@@ -49,7 +52,7 @@ const Home = () => {
                 <div className='col-md-4 my-3'>
                 
                                <div> <img src={mens} alt="" height={"250px"} width={"400px"} className='img-fluid mb-5 rounded-4' /></div>
-                    <button onClick={() => navigate("/section/Mens")} className='px-5 py-1 btn-primary rounded'>Shop For Men</button>
+                    <button onClick={() => navigate("/section/Mens")} className='px-5 py-1 btn-primary rounded'>Men</button>
                     
             
                 </div>
@@ -59,7 +62,7 @@ const Home = () => {
                         <img src={womens} alt="" height={"250px"} width={"400px"} className='img-fluid mb-5  rounded-4' />
                     </div>
                     
-                    <button onClick={() => navigate("/section/Womens")} className='px-5 py-1 btn-primary rounded'>Shop For Women</button>
+                    <button onClick={() => navigate("/section/Womens")} className='px-5 py-1 btn-primary rounded'>Women</button>
                 </div>
 
                 <div className='col-md-4 my-3'>
@@ -67,7 +70,7 @@ const Home = () => {
                         <img src={kids} alt="" height={"250px"} width={"400px"} className='img-fluid mb-5  rounded-4'  />
                     </div>
                     
-                    <button onClick={() => navigate("/section/Kids")} className='px-5 py-1 btn-primary rounded'>Shop For Kid</button>
+                    <button onClick={() => navigate("/section/Kids")} className='px-5 py-1 btn-primary rounded'>Kid</button>
                 </div>
             </div>
 
