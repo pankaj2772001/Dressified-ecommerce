@@ -87,8 +87,8 @@ const Cart = () => {
                             </div>
                             <div className="col-md-7 p-4">
                                 <p>{cartItem.product.section} {cartItem.product.brand} {cartItem.product.title}</p>
-                                <h5>${cartItem.product.price * cartItem.quantity} <strike>${cartItem.product.originalPrice * cartItem.quantity}</strike></h5>
-                                <p>You saved ${(cartItem.product.originalPrice - cartItem.product.price) * cartItem.quantity}</p>
+                                <h5>₹{cartItem.product.price * cartItem.quantity} <strike>₹{cartItem.product.originalPrice * cartItem.quantity}</strike></h5>
+                                <p>You saved ₹{(cartItem.product.originalPrice - cartItem.product.price) * cartItem.quantity}</p>
                                 <p>Size: {cartItem.selectedSize}</p>
                                 <p>Quantity: <span><span className="border p-1" onClick={() => updateCartItemQty(cartItem._id, "decreement")}>-</span><span className="border py-1 px-3">{cartItem.quantity}</span><span className="border p-1" onClick={() => updateCartItemQty(cartItem._id, "increement")}>+</span></span></p>
                                 <button className="w-100 p-1" onClick={() => removeCartItem(cartItem._id)}>Remove From Cart</button>

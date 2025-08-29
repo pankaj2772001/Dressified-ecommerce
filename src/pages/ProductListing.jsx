@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import StoreProvider from "../contexts/StoreProvider"
-import { useParams } from "react-router"
+import { useLocation, useParams } from "react-router"
 import { Link } from "react-router"
 import { GoHeartFill } from "react-icons/go";
 import { GoHeart } from "react-icons/go";
@@ -10,15 +10,28 @@ const ProductListing = () => {
 
 
 
-    const { sectionName } = useParams()
+    const { sectionName, categoryName } = useParams()
 
 
     const { products, addToWishList, findCategorie, wishList, removeWishList } = useContext(StoreProvider)
 
-    
-   
 
     const [selectedCategory, setSelectedCategory] = useState([])
+
+
+    useEffect(() => {
+
+        if (categoryName) {
+
+            setSelectedCategory([categoryName])
+
+        } else {
+            setSelectedCategory([])
+        }
+
+
+    }, [categoryName])
+
 
 
     const [sortType, setSortType] = useState(null)
@@ -49,11 +62,8 @@ const ProductListing = () => {
     }
 
 
-    const filterProducts = selectedCategory.length === 0 ? products?.filter((item) => item.section === sectionName) : products?.filter((items) => selectedCategory.includes(items.category) && items.section === sectionName) || []
+    const filterProducts = selectedCategory.length === 0 ? products?.filter((item) => item.section === sectionName) : products?.filter((items) => selectedCategory.includes(items.category) && items.section === sectionName)
 
-    console.log(products)
-     console.log(selectedCategory)
-    console.log(filterProducts)
 
 
 
