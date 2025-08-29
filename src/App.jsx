@@ -410,8 +410,8 @@ const checkOut = async (checkOutItems) => {
 
       <Routes>
         <Route path="/" element={<Navigate to={"/home"} />} />
-        <Route path="/section/:sectionName" element={<CategoryListing />} />
-        <Route path="/section/:sectionName/category/:categoryName" element={<ProductListing />} />
+        <Route path="/section/:sectionName" element={<ProductListing />} />
+        {/* <Route path="/section/:sectionName/category/:categoryName" element={<ProductListing />} /> */}
         <Route path="/product/:productId" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />

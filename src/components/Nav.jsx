@@ -45,7 +45,7 @@ const Nav = () => {
             <nav className="navbar navbar-expand-lg container">
                 <div className="container-fluid">
 
-                     <Link className="nav-link d-flex align-items-center" to={"/home"}> <img src={Logo} alt="Brand" width={"125rem"}/> </Link>
+                     <Link className="nav-link d-flex align-items-center" to={"/home"}> <img src={Logo} alt="Brand" width={"110rem"}/> </Link>
 
 
 
@@ -90,7 +90,7 @@ const Nav = () => {
                         </li>
 
                         <li className="nav-item">
-                            <ul className="navbar-nav gap-4">
+                            <ul className="navbar-nav gap-4 ">
 
                                 <li className="nav-item">
                                     <NavLink to={"/user"} className="nav-link position-relative"><FaUser className="fs-4" /></NavLink>
