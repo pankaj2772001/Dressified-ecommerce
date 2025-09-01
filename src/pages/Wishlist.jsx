@@ -36,10 +36,10 @@ const Wishlist = () => {
     }
 
     return (
-        <>
-            <h4 className="text-center py-4">My Wishlist</h4>
+        <div className="position-relative">
+            <h4 className="text-center">My Wishlist</h4>
 
-            <div className="row mx-4">
+            <div className=" row mx-4">
 
                 {
                     wishList?.map(item => {
@@ -52,7 +52,7 @@ const Wishlist = () => {
                                 <div className="shadow-sm">
 
                                     <Link to={`/product/${item.product._id}`}>
-                                        <img src={item.product.image} alt="" className="w-100 " style={{ objectFit: 'contain', height: "400px" }} />
+                                        <img src={item.product.image} alt="" className="w-100 " style={{ objectFit: 'contain', height: "420px" }} />
                                     </Link>
 
                                     <div className="text-center p-2">
@@ -62,10 +62,11 @@ const Wishlist = () => {
 
                                     <div className="px-2 pb-2">
                                         <button className="w-100 mb-2 p-2 btn-secondary btn" onClick={() => removeWishList(item.product._id)}>Remove From WishList</button>
-                                    <button className="w-100 p-2 btn-secondary btn" data-bs-toggle="offcanvas " data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" onClick={() => handleAddToCartClick(item)}>Move To Cart</button>
-
+                                    <button className="w-100 p-2 btn-secondary btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" onClick={() => handleAddToCartClick(item)}>Move To Cart</button>
                                     </div>
+
                                     
+
 
                                 </div>
 
@@ -172,7 +173,7 @@ const Wishlist = () => {
             
 
 
-        </>
+        </div>
 
 
 
