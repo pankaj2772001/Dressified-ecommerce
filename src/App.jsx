@@ -399,6 +399,7 @@ const checkOut = async (checkOutItems) => {
 
     console.log(size)
  
+    const [activeSection, setActiveSection] = useState(null)
     
 
 

@@ -90,7 +90,7 @@ const ProductListing = () => {
 
 
     return (
-        <div className="row py-4 px-3 mx-3">
+        <div className="row mx-4 mt-4">
 
             <div className="col-md-3 mb-4">
                 <div className="border border-2 p-3 rounded rounded-2">
@@ -122,13 +122,13 @@ const ProductListing = () => {
             <div className="col-md-9">
                 <div className="row">
 
-                    {sortedProducts?.map(prod => <div className="col-md-4 mb-5">
-                        <div className="card" >
+                    {sortedProducts?.map(prod => <div className="col-md-4 mb-4">
+                        <div className="card " >
 
                             <Link to={`/product/${prod._id}`}>
 
                                 <div>
-                                    <img src={prod.image} alt="" className="img-fluid border-bottom rounded-top h-100 w-100" style={{ objectFit: "cover" }} />
+                                    <img src={prod.image} alt="" className="img-fluid border-bottom rounded-top" style={{ objectFit: "contain", width: "100%", height: "380px" }} />
                                 </div>
 
 
