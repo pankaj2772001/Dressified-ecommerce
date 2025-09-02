@@ -11,6 +11,10 @@ import { RiShoppingBag2Line } from "react-icons/ri";
 
 const ProductDetail = () => {
 
+      window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
     const { productId } = useParams()
 
     const { products, addToCart, size, setSize, addToWishList, wishList, removeWishList } = useContext(StoreProvider)

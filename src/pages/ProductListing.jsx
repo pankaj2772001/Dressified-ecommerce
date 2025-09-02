@@ -8,6 +8,11 @@ import { GoHeart } from "react-icons/go";
 
 const ProductListing = () => {
 
+      window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
+
 
 
     const { sectionName, categoryName } = useParams()
@@ -18,6 +23,7 @@ const ProductListing = () => {
 
     const [selectedCategory, setSelectedCategory] = useState([])
 
+  
 
     useEffect(() => {
 
@@ -92,8 +98,8 @@ const ProductListing = () => {
     return (
         <div className="row mx-4 mt-4">
 
-            <div className="col-md-3 mb-4">
-                <div className="border border-2 p-3 rounded rounded-2">
+            <div className="col-md-3  mb-4">
+                <div className="border border-2 p-3 shadow-sm rounded rounded-2">
                     <div className=" d-flex justify-content-between align-items-center">
                         <h3>Filters</h3>
                         <button className="btn border btn-sm" onClick={handleBtn}>Clear Filters</button>
@@ -119,11 +125,11 @@ const ProductListing = () => {
 
 
 
-            <div className="col-md-9">
+            <div className="col-md-9 ">
                 <div className="row">
 
                     {sortedProducts?.map(prod => <div className="col-md-4 mb-4">
-                        <div className="card " >
+                        <div className="card shadow-sm" >
 
                             <Link to={`/product/${prod._id}`}>
 

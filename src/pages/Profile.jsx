@@ -116,14 +116,15 @@ const Profile = () => {
                 {
 
                     address.length > 0 ? address?.map(add => (
-                        <div className="border px-5 py-3 mb-4 rounded">
-                            <h5>{add.fullName.split(" ").map(word => word.toUpperCase()[0] + word.slice(1)).join(" ")}</h5>
+                        <div className="border px-5 py-3 shadow-sm mb-4 rounded">
+                            {/* <h5>{add.fullName.split(" ")?.map(word => word.toUpperCase()[0] + word.slice(1)).join(" ")}</h5> */}
+                            <h5>{add.fullName}</h5>
                             <p>{add.add1}</p>
                             <p>{add.add2}</p>
                             <p>{add.city} - {add.pincode}</p>
                             <p>{add.phoneNumber}</p>
                             
-                            <div className="">
+                            <div>
                                 <button className="btn btn-primary w-100 mb-3" onClick={() => {
                                 setFormData(add)
                                 setAddressBtnVisibilty(true)

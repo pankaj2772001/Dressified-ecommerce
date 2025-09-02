@@ -20,6 +20,7 @@ import CheckOut from "./pages/CheckOut";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 
@@ -399,12 +400,16 @@ const checkOut = async (checkOutItems) => {
 
     console.log(size)
  
-    const [activeSection, setActiveSection] = useState(null)
+    
+
+    const [deliveryFees, setDeliveryFees] = useState(5)
     
 
 
   return (
-    <StoreProvider.Provider value={{ notify, products, addToWishList, wishList, removeWishList, addToCart, size, setSize, cart, removeCartItem, updateCartItemQty, addAddress, address, updateAddress, deleteAddress, checkOutItems, setCheckOutItems, checkOut, findCategorie }}>
+    <StoreProvider.Provider value={{ notify, products, addToWishList, wishList, removeWishList, addToCart, size, setSize, cart, removeCartItem, updateCartItemQty, addAddress, address, updateAddress, deleteAddress, checkOutItems, setCheckOutItems, checkOut, findCategorie, deliveryFees, setDeliveryFees }}>
+
+      <ScrollToTop/>
 
       <Nav />
       {!shouldHideSection && <Section />}

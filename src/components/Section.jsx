@@ -1,13 +1,11 @@
 
-import { useContext, useState } from "react"
 import { useLocation, useNavigate, useParams } from "react-router"
-import StoreProvider from "../contexts/StoreProvider"
+
 
 const Section = () => {
 
     const navigate = useNavigate()
 
-    const [activeSection, setActiveSection] = useState()
 
     
 

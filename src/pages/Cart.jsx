@@ -4,9 +4,9 @@ import { Link } from "react-router"
 
 const Cart = () => {
 
-    const { cart, addToWishList, removeCartItem, updateCartItemQty, checkOutItems, setCheckOutItems, notify } = useContext(StoreProvider)
+    const { cart, addToWishList, removeCartItem, updateCartItemQty, checkOutItems, setCheckOutItems, notify, deliveryFees, setDeliveryFees } = useContext(StoreProvider)
 
-    const [deliveryFees, setDeliveryFees] = useState(5)
+    
 
 
 
@@ -53,24 +53,35 @@ const Cart = () => {
     }
 
 
+    if(totalAmount < 700){
+        setDeliveryFees(49)
+    }else if(totalAmount < 1500){
+        setDeliveryFees(99)
+    }else if(totalAmount > 1500 ){
+        setDeliveryFees(0)
+    }
+
 
 
 
 
 
     return (
-        <>
+        <div className="d-flex flex-column min-vh-100">
 
-            <h4 className="text-center py-4">MY BAG  ( {cart.item?.length} {cart.item?.length > 1 ? "Items" : "Item"} )</h4>
+            <main className="flex-fill">
 
-            <div className="row mx-4 gap-5">
+                {cartItems && cartItems.length > 0 ? <div>
+                <h4 className="text-center py-4">MY BAG  ( {cart.item?.length} {cart.item?.length > 1 ? "Items" : "Item"} )</h4>
+
+                <div className="row mx-4 gap-4">
 
                 <div className="col-md-7">
-                    {cartItems && cartItems.length > 0 ? cartItems?.map(cartItem => {
+                    {cartItems && cartItems.length > 0 && cartItems?.map(cartItem => {
 
                         return (
 
-                            <div className="row border rounded mb-4">
+                            <div className="row border shadow-sm rounded mb-4">
 
                                 <div className=" col-md-5 border-end">
 
@@ -99,16 +110,13 @@ const Cart = () => {
 
 
                         )
-                    }) :
-                        <div className="text-center p-5">
-                            <h3>🛒 Cart is Empty! Please Add Products</h3>
-                        </div>}
+                    })}
 
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-4 ">
 
-                    <div className="card p-4">
+                    <div className="card shadow-sm p-4">
                         <h5>PRICE DETAILS</h5>
                         <hr />
 
@@ -126,7 +134,7 @@ const Cart = () => {
 
                             return acc
                         }, 0) - subTotal} </p></div>
-                        <div className="d-flex justify-content-between"><p>Delivery Charges</p> <p>₹{deliveryFees}</p></div>
+                        <div className="d-flex justify-content-between"><p>Delivery Charges</p> <p>{deliveryFees === 0 ? "Free" : "₹"+deliveryFees}</p></div>
 
 
                         <hr />
@@ -153,7 +161,20 @@ const Cart = () => {
 
 
             </div>
-        </>
+
+
+
+            </div> : <div className="text-center p-5">
+                            <h3>🛒 Your Cart is Empty! Please Add Products</h3>
+                        </div>}
+            </main>
+
+            
+
+
+            
+            
+        </div>
 
     )
 }

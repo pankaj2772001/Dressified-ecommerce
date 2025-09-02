@@ -41,7 +41,7 @@ const Nav = () => {
     }
 
     return (
-        <header className="bg-light">
+        <header className="bg-light sticky-top shadow-sm">
             <nav className="navbar navbar-expand-lg container">
                 <div className="container-fluid">
 
@@ -51,8 +51,8 @@ const Nav = () => {
 
 
 <div>
-    <button class="navbar-toggler mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button className="navbar-toggler mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
 
 
@@ -64,7 +64,7 @@ const Nav = () => {
                         <li className="nav-item me-5">
 
                             <div className="input-group">
-                                <span class="input-group-text" ><CiSearch className="fs-5" /></span>
+                                <span className="input-group-text" ><CiSearch className="fs-5" /></span>
                                 <input className="pe-5 ps-2 py-2 form-control " type="text" onChange={searchSuggestions} value={query} placeholder="What are you looking for?" style={{ width: "15rem" }} />
                             </div>
 
