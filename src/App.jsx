@@ -27,18 +27,18 @@ import ScrollToTop from "./components/ScrollToTop";
 const StoreContent = () => {
 
   const [products, setProducts] = useState()
-    const [size, setSize] = useState("")
-    const [address, setAddress] = useState([])
-     const [checkOutItems, setCheckOutItems] = useState({
-        cartItems: "",
-        totalAmount: "",
-        address: "",
-    })
+  const [size, setSize] = useState("")
+  const [address, setAddress] = useState([])
+  const [checkOutItems, setCheckOutItems] = useState({
+    cartItems: "",
+    totalAmount: "",
+    address: "",
+  })
 
-    console.log(checkOutItems)
+  console.log(checkOutItems)
 
 
-console.log
+  console.log
 
   useEffect(() => {
 
@@ -84,38 +84,43 @@ console.log
 
       setCart(data)
 
-      
+
     } catch (error) {
-      
+
     }
 
 
   }
 
-  
-
-
-
 
 
   const addToWishList = async (productId) => {
 
+
+    const a = wishList.find((item) => {
+
+      return item.product._id === productId
+    })
+
     try {
 
-      const response = await fetch('https://dressified-ecommerce-backend.vercel.app/wishlist', {
+      if (a === undefined) {
 
-        method: "POST",
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ product: productId })
-      })
+        const response = await fetch('https://dressified-ecommerce-backend.vercel.app/wishlist', {
 
-      if(response.ok){
+          method: "POST",
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ product: productId })
+        })
 
-        notify("Item Added to wishlist")
+        if (response.ok) {
+
+          notify("Item Added to wishlist")
+        }
       }
+
       // if (!response.ok) throw new Error("Failed to add to wishlist");
       fetchWishList()
-      
 
     } catch (error) {
 
@@ -134,7 +139,7 @@ console.log
         method: "DELETE"
       })
 
-      if(response.ok){
+      if (response.ok) {
 
         notify("Item removed from wishlist")
       }
@@ -151,16 +156,16 @@ console.log
   }
 
   const notify = (msg) => toast(msg, {
-position: "bottom-right",
-autoClose: 700,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: false,
-draggable: true,
-progress: undefined,
-theme: "light",
-transition: Bounce,
-})
+    position: "bottom-right",
+    autoClose: 700,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    transition: Bounce,
+  })
 
   const addToCart = async (itemId, size) => {
 
@@ -168,31 +173,31 @@ transition: Bounce,
 
     try {
 
-      if(size.length != 0){
+      if (size.length != 0) {
 
         const response = await fetch("https://dressified-ecommerce-backend.vercel.app/cart", {
-      method: "POST",
-      headers: {"content-type" : "application/json"},
-      body: JSON.stringify({product: itemId, selectedSize: size})
-    })
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ product: itemId, selectedSize: size })
+        })
 
-    notify("Item added to the cart")
-    setSize("")
+        notify("Item added to the cart")
+        setSize("")
 
 
-      }else{
+      } else {
 
         notify("Please select a size")
       }
 
       fetchCartItems()
-      
-      
-      
+
+
+
     } catch (error) {
-      
+
     }
-    
+
   }
 
   const removeCartItem = async (cartId) => {
@@ -204,11 +209,11 @@ transition: Bounce,
         method: "DELETE"
       })
 
-      
+
       fetchCartItems()
-      
+
     } catch (error) {
-      
+
     }
 
 
@@ -224,23 +229,23 @@ transition: Bounce,
       const response = await fetch(`https://dressified-ecommerce-backend.vercel.app/cart/update/${cartItemId}`, {
 
         method: "POST",
-        headers: {"content-type" : "application/json"},
-        body: JSON.stringify({action: actioned})
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: actioned })
       })
 
-      if(response.ok){
+      if (response.ok) {
 
         notify("Cart item updated successfully")
       }
 
       fetchCartItems()
-      
+
     } catch (error) {
-      
+
     }
   }
 
-  async function fetchAddress(){
+  async function fetchAddress() {
 
     try {
 
@@ -249,9 +254,9 @@ transition: Bounce,
       const data = await response.json()
 
       setAddress(data)
-      
+
     } catch (error) {
-      
+
     }
   }
 
@@ -271,7 +276,7 @@ transition: Bounce,
       const response = await fetch('https://dressified-ecommerce-backend.vercel.app/address', {
 
         method: "POST",
-        headers: {"content-type" : "application/json"},
+        headers: { "content-type": "application/json" },
         body: JSON.stringify({
 
           fullName: formData.fullName,
@@ -285,86 +290,86 @@ transition: Bounce,
       })
 
       fetchAddress()
-      
+
     } catch (error) {
-      
+
     }
   }
 
 
-const updateAddress =  async (formData) => {
+  const updateAddress = async (formData) => {
 
-  const {_id} = formData
+    const { _id } = formData
 
-  try {
+    try {
 
-    const response = await fetch(`https://dressified-ecommerce-backend.vercel.app/address/update/${_id}`, {
+      const response = await fetch(`https://dressified-ecommerce-backend.vercel.app/address/update/${_id}`, {
 
-      method: "POST",
-      headers: {'content-type' : 'application/json'},
-      body: JSON.stringify(formData)
-    })
-
-    fetchAddress()
-    
-  } catch (error) {
-    
-  }
-}
-
-
-const deleteAddress = async (addressId) => {
-
-  try {
-
-    const response = await fetch(`https://dressified-ecommerce-backend.vercel.app/address/${addressId}`, {
-
-      method: "DELETE"
-    })
-
-    fetchAddress()
-    
-  } catch (error) {
-    
-  }
-}
-
-const checkOut = async (checkOutItems) => {
-
-
-
-  try {
-
-    const response = await fetch("https://dressified-ecommerce-backend.vercel.app/order", {
-
-      method: "POST",
-      headers: {'content-type' : 'application/json'},
-      body: JSON.stringify({
-        cartItems: checkOutItems.cartItems,
-        address: checkOutItems.address,
-        totalAmount: checkOutItems.totalAmount,
-        orderDate: new Date().toISOString(),
+        method: "POST",
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(formData)
       })
-    })
 
-    
+      fetchAddress()
 
-    setCheckOutItems({
+    } catch (error) {
+
+    }
+  }
+
+
+  const deleteAddress = async (addressId) => {
+
+    try {
+
+      const response = await fetch(`https://dressified-ecommerce-backend.vercel.app/address/${addressId}`, {
+
+        method: "DELETE"
+      })
+
+      fetchAddress()
+
+    } catch (error) {
+
+    }
+  }
+
+  const checkOut = async (checkOutItems) => {
+
+
+
+    try {
+
+      const response = await fetch("https://dressified-ecommerce-backend.vercel.app/order", {
+
+        method: "POST",
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          cartItems: checkOutItems.cartItems,
+          address: checkOutItems.address,
+          totalAmount: checkOutItems.totalAmount,
+          orderDate: new Date().toISOString(),
+        })
+      })
+
+
+
+      setCheckOutItems({
         cartItems: "",
         totalAmount: "",
         address: "",
-    })
+      })
 
-    return response
+      return response
 
 
-    
-  } catch (error) {
 
-    console.log('Failed to checkout')
-    
+    } catch (error) {
+
+      console.log('Failed to checkout')
+
+    }
   }
-}
   const location = useLocation()
 
   console.log(location)
@@ -373,43 +378,43 @@ const checkOut = async (checkOutItems) => {
 
   const shouldHideSection = hideSectionRoutes.some((path) => location.pathname.startsWith(path))
 
- 
 
- function findCategorie(sectionName){
 
-        const filteredProducts = products?.filter((products => products.section === sectionName ))
+  function findCategorie(sectionName) {
+
+    const filteredProducts = products?.filter((products => products.section === sectionName))
 
 
     const categories = filteredProducts?.map(product => product.category)
 
-    
+
 
     const uniqueCategories = [...new Set(categories)]
 
     return uniqueCategories
 
-    }
+  }
 
 
-    useEffect(() => {
+  useEffect(() => {
 
-      setSize("")
+    setSize("")
 
 
-    }, [location.pathname])
+  }, [location.pathname])
 
-    console.log(size)
- 
-    
+  console.log(size)
 
-    const [deliveryFees, setDeliveryFees] = useState(5)
-    
+
+
+  const [deliveryFees, setDeliveryFees] = useState(5)
+
 
 
   return (
     <StoreProvider.Provider value={{ notify, products, addToWishList, wishList, removeWishList, addToCart, size, setSize, cart, removeCartItem, updateCartItemQty, addAddress, address, updateAddress, deleteAddress, checkOutItems, setCheckOutItems, checkOut, findCategorie, deliveryFees, setDeliveryFees }}>
 
-      <ScrollToTop/>
+      <ScrollToTop />
 
       <Nav />
       {!shouldHideSection && <Section />}
@@ -423,25 +428,25 @@ const checkOut = async (checkOutItems) => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/user" element={<Profile />} />
-        <Route path="/checkout" element={<CheckOut/>}/>
-        <Route path="/home" element={<Home/>}/>
+        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/home" element={<Home />} />
 
       </Routes>
       <ToastContainer
-      position="bottom-right"
-autoClose={700}
-hideProgressBar={false}
-newestOnTop
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover={false}
-theme="light"
-transition={Bounce}
+        position="bottom-right"
+        autoClose={700}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+        transition={Bounce}
       />
-      <Footer/>
-      
+      <Footer />
+
 
     </StoreProvider.Provider>
 
