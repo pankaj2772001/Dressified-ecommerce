@@ -167,19 +167,34 @@ const StoreContent = () => {
     transition: Bounce,
   })
 
+  
+
   const addToCart = async (itemId, size) => {
 
-    console.log(size)
+
+    const ab = cart?.item.find((prod) => {
+
+      return prod.selectedSize === size && prod.product._id === itemId
+    })
 
     try {
 
       if (size.length != 0) {
 
-        const response = await fetch("https://dressified-ecommerce-backend.vercel.app/cart", {
+        
+          if(ab){
+
+            updateCartItemQty(ab._id, "increement")
+
+          }else{
+            const response = await fetch("https://dressified-ecommerce-backend.vercel.app/cart", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ product: itemId, selectedSize: size })
         })
+
+          }
+        
 
         notify("Item added to the cart")
         setSize("")

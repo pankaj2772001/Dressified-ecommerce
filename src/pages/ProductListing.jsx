@@ -75,8 +75,6 @@ const ProductListing = () => {
     const filterProducts = selectedCategory.length === 0 ? products?.filter((item) => item.section === sectionName) : products?.filter((items) => selectedCategory.includes(items.category) && items.section === sectionName)
 
 
-
-    console.log(filterProducts)
     const filterByPrice =  range !== 0 ? filterProducts?.filter((item) =>  item.price <= range) : filterProducts
 
     console.log(filterByPrice)
@@ -137,7 +135,7 @@ const ProductListing = () => {
 
                     <div>
                             <label for="range2" class="form-label"><h6>Price</h6></label>
-<input type="range" className="form-range" min="0" max="5000" id="range2" step="200" value={range}   onChange={(e) => setRange(e.target.value)}></input>
+<input type="range" className="form-range" min="0" max="5000" id="range2" step="200" value={range}  onChange={(e) => setRange(e.target.value)}></input>
 <output for="range4" id="rangeValue" aria-hidden="true" >{range}</output>
 
                     </div>
