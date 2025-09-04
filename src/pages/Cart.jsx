@@ -101,7 +101,7 @@ const Cart = () => {
                                     <h5>₹{cartItem.product.price * cartItem.quantity} <strike>₹{cartItem.product.originalPrice * cartItem.quantity}</strike></h5>
                                     <p>You saved ₹{(cartItem.product.originalPrice - cartItem.product.price) * cartItem.quantity}</p>
                                     <p>Size: {cartItem.selectedSize}</p>
-                                    <p>Quantity: <span><span className="border p-1" onClick={() => updateCartItemQty(cartItem._id, "decreement")}>-</span><span className="border py-1 px-3">{cartItem.quantity}</span><span className="border p-1" onClick={() => updateCartItemQty(cartItem._id, "increement")}>+</span></span></p>
+                                    <p>Quantity: <span><span style={{cursor: "pointer"  }} className="border p-1" onClick={() => updateCartItemQty(cartItem._id, "decreement")}>-</span><span  className="border py-1 px-3">{cartItem.quantity}</span><span style={{cursor: "pointer"  }} className="border p-1" onClick={() => updateCartItemQty(cartItem._id, "increement")}>+</span></span></p>
                                     <button className="w-100 p-2 btn btn-secondary" onClick={() => removeCartItem(cartItem._id)}>Remove From Cart</button>
                                     <button className="w-100 p-2 mt-3 btn btn-secondary" onClick={() => handleMoveToWishlist(cartItem.product._id, cartItem._id)}>Move To Wishlist</button>
 

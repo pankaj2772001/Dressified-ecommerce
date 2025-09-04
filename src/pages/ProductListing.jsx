@@ -23,6 +23,10 @@ const ProductListing = () => {
 
     const [selectedCategory, setSelectedCategory] = useState([])
 
+    const [range, setRange] = useState(0)
+
+    console.log(range)
+
   
 
     useEffect(() => {
@@ -72,8 +76,15 @@ const ProductListing = () => {
 
 
 
+    console.log(filterProducts)
+    const filterByPrice =  range !== 0 ? filterProducts?.filter((item) =>  item.price <= range) : filterProducts
 
-    const sortedProducts = filterProducts ? [...filterProducts]?.sort((a, b) => {
+    console.log(filterByPrice)
+
+
+
+
+    const sortedProducts = filterByPrice ? [...filterByPrice]?.sort((a, b) => {
 
         if (!sortType) {
             return 0
@@ -89,6 +100,7 @@ const ProductListing = () => {
 
         setSortType(null)
         setSelectedCategory([])
+        setRange(0)
     }
 
 
@@ -119,6 +131,17 @@ const ProductListing = () => {
                     <h6>Sort by Price</h6>
                     <input type="radio" name="filterPrice" onChange={() => setSortType("asc")} checked={sortType === "asc"} /> Low to High<br />
                     <input type="radio" name="filterPrice" onChange={() => setSortType("des")} checked={sortType === "des"} /> High to Low
+
+                    <hr />
+
+
+                    <div>
+                            <label for="range2" class="form-label"><h6>Price</h6></label>
+<input type="range" className="form-range" min="0" max="5000" id="range2" step="200" value={range}   onChange={(e) => setRange(e.target.value)}></input>
+<output for="range4" id="rangeValue" aria-hidden="true" >{range}</output>
+
+                    </div>
+                    
                 </div>
 
             </div>
@@ -152,7 +175,7 @@ const ProductListing = () => {
                                 </div>
 
                                 <div className="mt-4">
-                                    {wishList?.find((item) => item.product?._id === prod._id) ? <GoHeartFill onClick={() => removeWishList(prod._id)} className="text-danger fs-2" /> : <GoHeart className="fs-2" onClick={() => handleAddtoWishList(prod._id)} />}
+                                    {wishList?.find((item) => item.product?._id === prod._id) ? <GoHeartFill style={{cursor: "pointer"  }} onClick={() => removeWishList(prod._id)} className="text-danger fs-2" /> : <GoHeart style={{cursor: "pointer"  }} className="fs-2"  onClick={() => handleAddtoWishList(prod._id)} />}
                                 </div>
 
 
