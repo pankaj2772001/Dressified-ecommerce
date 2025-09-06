@@ -11,7 +11,9 @@ const Profile = () => {
    const [addressBtnVisibilty, setAddressBtnVisibilty] = useState(false)
    const [isEditing, setIsEditing] = useState(false)
 
-   console.log(address)
+   const [loading, setLoading] = useState(false)
+
+   
 
     const [formData, setFormData] = useState({
 
@@ -33,15 +35,34 @@ const Profile = () => {
 
     }
 
-    function formHandler(event){
+    async function formHandler(event){
         event.preventDefault()
 
+        setLoading(true)
         if(isEditing){
 
-            updateAddress(formData)
-            setIsEditing(false)
+            const res = await updateAddress(formData)
+
+            
+
+            if(res.ok){
+setLoading(false)
+setAddressBtnVisibilty(false)
+setIsEditing(false)
+            }
+            
         }else{
-            addAddress(formData)
+
+            
+            const res = await addAddress(formData)
+
+            if(res.ok){
+                setLoading(false)
+                setAddressBtnVisibilty(false)
+                 
+            }
+           
+            
         }
 
         
@@ -56,7 +77,7 @@ const Profile = () => {
  
         })
 
-        setAddressBtnVisibilty(false)
+        
     }
 
 
@@ -157,7 +178,7 @@ const Profile = () => {
             <input type="text" placeholder="House No, Building Name" name="add1" value={formData.add1} onChange={handleChange} required className="form-control"/><br />
             <input type="text" placeholder="Road Name, Area, Colony" name="add2" value={formData.add2} onChange={handleChange} required  className="form-control"/><br />
             <input type="text" placeholder="City" name="city" value={formData.city} onChange={handleChange} required className="form-control"/><br />
-            <button className="w-100 btn-secondary btn" type="submit">{isEditing ? "Update Address" : "Save Address"}</button>
+            <button className="w-100 btn-secondary btn" type="submit">{isEditing ? loading ? "Updating..." : "Update Address" :  loading ? "Saving..." : "Save Address"}</button>
 
         </form>
 }

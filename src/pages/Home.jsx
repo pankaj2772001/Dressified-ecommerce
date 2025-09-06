@@ -8,16 +8,25 @@ import { useNavigate } from 'react-router'
 import img1 from '../assets/img1.png'
 import img2 from '../assets/img2.png'
 import img3 from '../assets/img3.png'
+import { useContext } from 'react'
+import StoreProvider from '../contexts/StoreProvider'
 
 const Home = () => {
 
 
     const navigate = useNavigate()
 
+    const {loading, setLoading} = useContext(StoreProvider)
+
+    console.log(loading)
+
 
     return (
 
+
         < main className='text-center py-3'>
+            
+            
 <div className='container'>
     <div id="carouselExampleRide" className='carousel slide' data-bs-ride="true">
                 <div className='carousel-inner rounded-4'>

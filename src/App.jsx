@@ -21,6 +21,7 @@ import { ToastContainer, toast, Bounce } from 'react-toastify';
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import { RiH1 } from "react-icons/ri";
 
 
 
@@ -35,7 +36,9 @@ const StoreContent = () => {
     address: "",
   })
 
-  console.log(checkOutItems)
+  const [loading, setLoading] = useState(true)
+
+  console.log(loading)
 
 
   console.log
@@ -44,9 +47,15 @@ const StoreContent = () => {
 
     async function fetchProducts() {
 
+       
+
       const res = await fetch('https://dressified-ecommerce-backend.vercel.app/products')
 
+     
+
       const data = await res.json()
+
+      setLoading(false)
 
       setProducts(data.data.products)
     }
@@ -304,7 +313,11 @@ const StoreContent = () => {
 
       })
 
+      
+
       fetchAddress()
+
+      return response
 
     } catch (error) {
 
@@ -326,6 +339,8 @@ const StoreContent = () => {
       })
 
       fetchAddress()
+
+      return response
 
     } catch (error) {
 
@@ -427,15 +442,18 @@ const StoreContent = () => {
 
 
   return (
-    <StoreProvider.Provider value={{ notify, products, addToWishList, wishList, removeWishList, addToCart, size, setSize, cart, removeCartItem, updateCartItemQty, addAddress, address, updateAddress, deleteAddress, checkOutItems, setCheckOutItems, checkOut, findCategorie, deliveryFees, setDeliveryFees }}>
+    <StoreProvider.Provider value={{ notify, products, addToWishList, wishList, removeWishList, addToCart, size, setSize, cart, removeCartItem, updateCartItemQty, addAddress, address, updateAddress, deleteAddress, checkOutItems, setCheckOutItems, checkOut, findCategorie, deliveryFees, setDeliveryFees, loading, setLoading }}>
 
       <ScrollToTop />
-
+    
       <Nav />
       {!shouldHideSection && <Section />}
 
-
-      <Routes>
+      <div>{loading ? <div className="text-center mt-5">
+  
+  <div className="spinner-border text-primary" aria-hidden="true"></div>
+  <div role="status">Please wait, Loading...</div>
+</div>: <Routes>
         <Route path="/" element={<Navigate to={"/home"} />} />
         <Route path="/section/:sectionName" element={<ProductListing />} />
         <Route path="/section/:sectionName/category/:categoryName" element={<ProductListing />} />
@@ -446,7 +464,8 @@ const StoreContent = () => {
         <Route path="/checkout" element={<CheckOut />} />
         <Route path="/home" element={<Home />} />
 
-      </Routes>
+      </Routes>}</div>
+      
       <ToastContainer
         position="bottom-right"
         autoClose={700}
