@@ -45,28 +45,23 @@ const Nav = () => {
             <nav className="navbar navbar-expand-lg container">
                 <div className="container-fluid">
 
-                    <Link className="nav-link d-flex align-items-center" to={"/home"}> <img src={Logo} alt="Brand" width={"110rem"} /> </Link>
-
-
-
-                    
+                    <Link className="nav-link " to={"/home"}> <img src={Logo} alt="Brand" width={"110rem"} /> </Link>
 
 
 
 
-                    <div>
 
-                        <button className="navbar-toggler mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+
+                    <button className="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
 
-
-
-
+                    <div>
 
                         <div className="collapse navbar-collapse mt-3" id="navbarSupportedContent">
-                            
+
                             <ul className="navbar-nav ">
                                 <li className="nav-item me-5">
 
