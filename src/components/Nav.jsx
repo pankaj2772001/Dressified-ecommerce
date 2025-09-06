@@ -70,9 +70,9 @@ const Nav = () => {
                             <ul className="navbar-nav ">
                                 <li className="nav-item me-5">
 
-                                    <div className="input-group">
-                                        <span className="input-group-text" ><CiSearch className="fs-5" /></span>
-                                        <input className="pe-5 ps-2 py-2 form-control " type="text" onChange={searchSuggestions} value={query} placeholder="What are you looking for?" style={{ width: "15rem" }} />
+                                    <div className="input-group" style={{ width: "15rem" }}>
+                                        <span className="input-group-text border-end-0" ><CiSearch className="fs-5 text-muted" /></span>
+                                        <input className=" py-2 form-control border-start-0" type="text" onChange={searchSuggestions} value={query} placeholder="What are you looking for?" />
                                     </div>
 
 
