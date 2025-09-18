@@ -70,7 +70,7 @@ const CheckOut = () => {
 
                     <h4 className="mb-3">Select Shipping Address</h4>
                     {
-                       address.length > 0 ? address?.map(add => <div className="p-4 shadow-sm border rounded-2 "><input type="radio" name="selectAddress" onClick={() => setCheckOutItems(prev => ({ ...prev, address: add._id }))} /> <span>{add.fullName + ", " + add.add1 + ", " + add.add2 + ", " + add.city + ", " + add.pincode}</span></div>) : null
+                       address.length > 0 ? address?.map(add => <div className="p-4 shadow-sm border rounded-2 mt-3 "><input type="radio" name="selectAddress" onClick={() => setCheckOutItems(prev => ({ ...prev, address: add._id }))} /> <span>{add.fullName + ", " + add.add1 + ", " + add.add2 + ", " + add.city + ", " + add.pincode}</span></div>) : null
                     }
 
                     <Link className="btn btn-secondary mt-3 " to={"/user"}>+ Add New Address</Link>

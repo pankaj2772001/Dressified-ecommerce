@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import StoreProvider from "../contexts/StoreProvider"
-import { useLocation, useParams } from "react-router"
+import { useParams } from "react-router"
 import { Link } from "react-router"
 import { GoHeartFill } from "react-icons/go";
 import { GoHeart } from "react-icons/go";
@@ -143,13 +143,10 @@ const ProductListing = () => {
                 </div>
 
             </div>
-
-
-
             <div className="col-md-9 ">
                 <div className="row">
 
-                    {sortedProducts?.map(prod => <div className="col-md-4 mb-4">
+                    { sortedProducts.length > 0 ? (sortedProducts?.map(prod => <div className="col-md-4 mb-4">
                         <div className="card shadow-sm" >
 
                             <Link to={`/product/${prod._id}`}>
@@ -183,8 +180,8 @@ const ProductListing = () => {
                             </div>
 
                         </div>
-                    </div>
-                    )}
+                    </div>) 
+                    ) : <div className="text-center">No Product Found</div>}
                 </div>
             </div>
 
