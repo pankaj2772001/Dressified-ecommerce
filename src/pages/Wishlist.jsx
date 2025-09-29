@@ -47,7 +47,7 @@ const Wishlist = () => {
 
                     {wishList && wishList.length > 0 ? <>
 
-                        <h3 className="text-center pt-3">WishList</h3>
+                        <h3 className="text-center pt-3">Wishlist</h3>
 
                         <div className=" row mx-4 mt-3">
 
