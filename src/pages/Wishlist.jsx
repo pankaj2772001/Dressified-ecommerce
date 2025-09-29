@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import StoreProvider from "../contexts/StoreProvider"
 import { Link } from "react-router"
+import React from "react"
 
 const Wishlist = () => {
 
@@ -9,8 +10,6 @@ const Wishlist = () => {
 
 
     const [selectedItem, setSelectedItem] = useState(null)
-
-    console.log(wishList)
 
 
     const handleAddToCartClick = (item) => {
@@ -39,6 +38,8 @@ const Wishlist = () => {
 
         <div className="d-flex flex-column min-vh-100"> 
 
+        
+
             <main className="flex-fill">
 
                 <div className="position-relative">
@@ -46,8 +47,9 @@ const Wishlist = () => {
 
                     {wishList && wishList.length > 0 ? <>
 
+                        <h3 className="text-center pt-3">WishList</h3>
 
-                        <div className=" row mx-4 mt-4">
+                        <div className=" row mx-4 mt-3">
 
                             {
                                 wishList?.map(item => {
@@ -55,7 +57,7 @@ const Wishlist = () => {
                                     return (
 
 
-                                        <div className="col-md-3 mb-4">
+                                        <div key={item._id} className="col-md-3 mb-4">
 
                                             <div className="shadow-sm rounded-2 border">
 
@@ -88,9 +90,9 @@ const Wishlist = () => {
                             }
 
                         </div>
-                        {<div className=" text-center offcanvas offcanvas-top px-4" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                        {<div className=" text-center offcanvas offcanvas-top px-4" tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                             <div className="offcanvas-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
 
                             <div className="offcanvas-body">
@@ -103,17 +105,17 @@ const Wishlist = () => {
 
                                     return (
 
-                                        <>
+                                        <React.Fragment key={item._id}>
 
                                             {
-                                                item?._id === selectedItem?._id && <div>
+                                                item?._id === selectedItem?._id && <div >
 
                                                     {item.product?.sizes.map(size => {
 
                                                         return (
                                                             <>
 
-                                                                <button data-bs-toggle="offcanvas" className="mx-2 px-3 py-1 rounded-3" onClick={() => handleSizeAndCart(size)}>{size}</button>
+                                                                <button key={size} data-bs-toggle="offcanvas" className="mx-2 px-3 py-1 rounded-3" onClick={() => handleSizeAndCart(size)}>{size}</button>
 
                                                             </>
 
@@ -124,7 +126,7 @@ const Wishlist = () => {
                                             }
 
 
-                                        </>
+                                        </React.Fragment>
 
 
                                     )

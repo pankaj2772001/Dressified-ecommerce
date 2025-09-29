@@ -14,8 +14,6 @@ const CheckOut = () => {
     const navigate = useNavigate()
 
 
-
-
     async function checkOutHandler() {
 
         if (!checkOutItems.address) {
@@ -45,7 +43,6 @@ const CheckOut = () => {
 
     }
 
-    console.log(checkOutItems)
 
     const subTotal = cart.item?.reduce((acc, curr) => {
 
@@ -59,7 +56,7 @@ const CheckOut = () => {
 
         <div className="mx-5">
 
-            <h3 className="text-center my-5">Checkout</h3>
+            <h3 className="text-center my-4">Checkout</h3>
 
             {orderPlace ? <div className="text-center"><h2>Order Placed Successfully</h2></div> : <div className="row gap-5">
 
@@ -70,7 +67,7 @@ const CheckOut = () => {
 
                     <h4 className="mb-3">Select Shipping Address</h4>
                     {
-                       address.length > 0 ? address?.map(add => <div className="p-4 shadow-sm border rounded-2 mt-3 "><input type="radio" name="selectAddress" onClick={() => setCheckOutItems(prev => ({ ...prev, address: add._id }))} /> <span>{add.fullName + ", " + add.add1 + ", " + add.add2 + ", " + add.city + ", " + add.pincode}</span></div>) : null
+                       address.length > 0 ? address?.map(add => <div className="p-4 shadow-sm border rounded-2 mt-3 " key={add._id}><input type="radio" name="selectAddress" onClick={() => setCheckOutItems(prev => ({ ...prev, address: add._id }))} /> <span>{add.fullName + ", " + add.add1 + ", " + add.add2 + ", " + add.city + ", " + add.pincode}</span></div>) : null
                     }
 
                     <Link className="btn btn-secondary mt-3 " to={"/user"}>+ Add New Address</Link>
@@ -94,10 +91,10 @@ const CheckOut = () => {
                             {
                                 cart.item?.map(cartItem => <>
 
-                                    <div className="d-flex justify-content-between">
+                                    <div  className="d-flex justify-content-between">
 
-                                        <p>{cartItem.product.section} {cartItem.product.title}</p>
-                                        <p>{cartItem.quantity}</p>
+                                        <p key={cartItem.product._id}>{cartItem.product.section} {cartItem.product.title} ({cartItem.selectedSize})</p>
+                                        <p>{cartItem.quantity}</p> 
 
                                     </div>
 

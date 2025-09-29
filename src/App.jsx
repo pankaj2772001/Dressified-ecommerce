@@ -38,10 +38,9 @@ const StoreContent = () => {
 
   const [loading, setLoading] = useState(true)
 
-  console.log(loading)
 
 
-  console.log
+
 
   useEffect(() => {
 
@@ -66,7 +65,7 @@ const StoreContent = () => {
   const [wishList, setWishList] = useState([])
   const [cart, setCart] = useState([])
 
-  console.log(cart)
+
 
   const fetchWishList = async () => {
 
@@ -139,7 +138,7 @@ const StoreContent = () => {
 
   const removeWishList = async (itemId) => {
 
-    console.log(itemId)
+
 
     try {
 
@@ -245,8 +244,7 @@ const StoreContent = () => {
 
   const updateCartItemQty = async (cartItemId, actioned) => {
 
-    console.log(cartItemId)
-    console.log(actioned)
+ 
 
     try {
 
@@ -402,7 +400,7 @@ const StoreContent = () => {
   }
   const location = useLocation()
 
-  console.log(location)
+ 
 
   const hideSectionRoutes = ["/cart", "/wishlist", '/user', '/checkout', '/home']
 
@@ -433,7 +431,7 @@ const StoreContent = () => {
 
   }, [location.pathname])
 
-  console.log(size)
+  
 
 
 

@@ -16,9 +16,6 @@ const Home = () => {
 
     const navigate = useNavigate()
 
-    const {loading, setLoading} = useContext(StoreProvider)
-
-    console.log(loading)
 
 
     return (

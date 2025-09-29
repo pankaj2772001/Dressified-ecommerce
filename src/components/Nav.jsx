@@ -17,7 +17,6 @@ const Nav = () => {
 
     const { products, wishList, cart } = useContext(StoreProvider)
 
-    console.log(cart)
 
     const navigate = useNavigate()
 
@@ -39,6 +38,8 @@ const Nav = () => {
         setSuggestions(matchedProducts || [])
 
     }
+
+ 
 
     return (
         <header className="bg-light sticky-top shadow-sm">
@@ -74,7 +75,7 @@ const Nav = () => {
                                     <div>
                                         <ul className={`z-1 position-absolute mt-2 list-group list-group-flush rounded shadow-sm   ${suggestions.length > 0 && "overflow-y-scroll"}`} style={{ maxHeight: "300px" }} >
 
-                                            {suggestions.length > 0 ? suggestions?.map(item => <li className="list-group-item pe-5" style={{ cursor: "pointer" }} onClick={() => {
+                                            {suggestions.length > 0 ? suggestions?.map(item => <li key={suggestions._id} className="list-group-item pe-5" style={{ cursor: "pointer" }} onClick={() => {
                                                 navigate(`/section/${item.section}/category/${item.category}`);
                                                 setQuery('')
                                                 setSuggestions([])
@@ -95,34 +96,15 @@ const Nav = () => {
 
                                     <NavLink to={"/user"} className="nav-link position-relative"><FaUser className="fs-4" /></NavLink>
 
-                                    <NavLink to={"/wishlist"} className="nav-link position-relative"><FaHeart className="fs-4 " />{wishList.length > 0 && <span class="position-absolute top-1 ms-2 translate-middle badge rounded-pill bg-primary">{wishList.length}
+                                    <NavLink to={"/wishlist"} className="nav-link position-relative"><FaHeart className="fs-4 " />{wishList.length > 0 && <span className="position-absolute top-1 ms-2 translate-middle badge rounded-pill bg-primary">{wishList.length}
                                     </span>}
 
                                     </NavLink>
 
-                                    <NavLink to={"/cart"} className="nav-link  position-relative"><FaShoppingCart className="fs-4" />{cart.item?.length > 0 && <span class="position-absolute top-1 ms-2 translate-middle badge rounded-pill bg-primary">{cart.item?.length}
+                                    <NavLink to={"/cart"} className="nav-link  position-relative"><FaShoppingCart className="fs-4" />{cart.item?.length > 0 && <span className="position-absolute top-1 ms-2 translate-middle badge rounded-pill bg-primary">{cart.item?.length}
 
                                     </span>}</NavLink>
-                                    {/* <ul className="navbar-nav gap-4 ">
-
-                                        <li className="nav-item">
-                                            <NavLink to={"/user"} className="nav-link position-relative"><FaUser className="fs-4" /></NavLink>
-                                        </li>
-
-                                        <li className="nav-item">
-                                            <NavLink to={"/wishlist"} className="nav-link position-relative"><FaHeart className="fs-4 " />{wishList.length > 0 && <span class="position-absolute top-1 ms-2 translate-middle badge rounded-pill bg-primary">{wishList.length}
-                                            </span>}
-
-                                            </NavLink>
-                                        </li>
-                                        <li className="nav-item ">
-                                            <NavLink to={"/cart"} className="nav-link  position-relative"><FaShoppingCart className="fs-4" />{cart.item?.length > 0 && <span class="position-absolute top-1 ms-2 translate-middle badge rounded-pill bg-primary">{cart.item?.length}
-
-                                            </span>}</NavLink>
-                                        </li>
-
-                                    </ul>
-                                     */}
+                                   
                                 </li>
 
                             </ul>

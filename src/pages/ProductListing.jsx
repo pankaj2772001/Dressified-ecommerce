@@ -4,13 +4,14 @@ import { useParams } from "react-router"
 import { Link } from "react-router"
 import { GoHeartFill } from "react-icons/go";
 import { GoHeart } from "react-icons/go";
+import React from "react";
 
 
 const ProductListing = () => {
 
-      window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
 
 
 
@@ -25,9 +26,9 @@ const ProductListing = () => {
 
     const [range, setRange] = useState(0)
 
-    console.log(range)
+ 
 
-  
+
 
     useEffect(() => {
 
@@ -75,9 +76,9 @@ const ProductListing = () => {
     const filterProducts = selectedCategory.length === 0 ? products?.filter((item) => item.section === sectionName) : products?.filter((items) => selectedCategory.includes(items.category) && items.section === sectionName)
 
 
-    const filterByPrice =  range !== 0 ? filterProducts?.filter((item) =>  item.price <= range) : filterProducts
+    const filterByPrice = range !== 0 ? filterProducts?.filter((item) => item.price <= range) : filterProducts
 
-    console.log(filterByPrice)
+    
 
 
 
@@ -92,7 +93,7 @@ const ProductListing = () => {
         }
     }) : []
 
-    console.log(sortedProducts)
+    
 
     function handleBtn() {
 
@@ -119,10 +120,10 @@ const ProductListing = () => {
 
                     <h6>Categories</h6>
 
-                    {categories && categories?.map(category => <>
+                    {categories && categories?.map((category, index) => <React.Fragment key={index}>
 
                         <input type="checkbox" onChange={handleCheckbox} value={category} checked={selectedCategory.includes(category)} /> {category} <br />
-                    </>)}
+                    </React.Fragment>)}
 
                     <hr />
 
@@ -134,19 +135,19 @@ const ProductListing = () => {
 
 
                     <div>
-                            <label for="range2" class="form-label"><h6>Price</h6></label>
-<input type="range" className="form-range" min="0" max="5000" id="range2" step="200" value={range}  onChange={(e) => setRange(e.target.value)}></input>
-<output for="range4" id="rangeValue" aria-hidden="true" >{range}</output>
+                        <label htmlFor="range2" className="form-label"><h6>Price</h6></label>
+                        <input type="range" className="form-range" min="0" max="5000" id="range2" step="200" value={range} onChange={(e) => setRange(e.target.value)}></input>
+                        <output htmlFor="range4" id="rangeValue" aria-hidden="true" >{range}</output>
 
                     </div>
-                    
+
                 </div>
 
             </div>
             <div className="col-md-9 ">
                 <div className="row">
 
-                    { sortedProducts.length > 0 ? (sortedProducts?.map(prod => <div className="col-md-4 mb-4">
+                    {sortedProducts.length > 0 ? (sortedProducts?.map(prod => <div className="col-md-4 mb-4">
                         <div className="card shadow-sm" >
 
                             <Link to={`/product/${prod._id}`}>
@@ -170,7 +171,7 @@ const ProductListing = () => {
                                 </div>
 
                                 <div className="mt-4">
-                                    {wishList?.find((item) => item.product?._id === prod._id) ? <GoHeartFill style={{cursor: "pointer"  }} onClick={() => removeWishList(prod._id)} className="text-danger fs-2" /> : <GoHeart style={{cursor: "pointer"  }} className="fs-2"  onClick={() => handleAddtoWishList(prod._id)} />}
+                                    {wishList?.find((item) => item.product?._id === prod._id) ? <GoHeartFill style={{ cursor: "pointer" }} onClick={() => removeWishList(prod._id)} className="text-danger fs-2" /> : <GoHeart style={{ cursor: "pointer" }} className="fs-2" onClick={() => handleAddtoWishList(prod._id)} />}
                                 </div>
 
 
@@ -180,7 +181,7 @@ const ProductListing = () => {
                             </div>
 
                         </div>
-                    </div>) 
+                    </div>)
                     ) : <div className="text-center">No Product Found</div>}
                 </div>
             </div>

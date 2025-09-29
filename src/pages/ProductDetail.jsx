@@ -49,14 +49,14 @@ const ProductDetail = () => {
                         <div className="mt-4">
                             <h6>Please select a size.</h6>
                             <p className="mt-3">
-                                {productDetail.sizes?.map(siz => <button onClick={() => setSize(siz)} className={`me-3 rounded-4 ${siz === size ? "bg-secondary" : "bg-light"}`} style={{ width: "40px", height: "40px" }}>{siz}</button>)}
+                                {productDetail.sizes?.map(siz => <button onClick={() => setSize(siz)} className={`me-3 rounded-4 ${siz === size ? "bg-secondary"  : "bg-light"}`} style={{ width: "40px", height: "40px" }}>{siz}</button>)}
                             </p>
                         </div>
 
 
                     </div>
                     <div className="row mx-1">
-                        <span className="me-2 btn border py-2 px-5 bg-primary " onClick={() => addToCart(productDetail._id, size)}> <RiShoppingBag2Line /> ADD TO BAG</span>
+                        <span className="me-2 btn border py-2 px-5 btn-primary " onClick={() => addToCart(productDetail._id, size)}> <RiShoppingBag2Line /> ADD TO BAG</span>
 
 
                         {wishList?.find((item) => item.product?._id === productDetail._id) ?

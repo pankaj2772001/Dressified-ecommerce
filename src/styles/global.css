@@ -14,5 +14,5 @@
 .btn-primary{ background: var(--yellow); color: var(--ink); border-color: var(--yellow); }
 .btn-primary:hover{ background: var(--pink); color:#fff; border-color: var(--pink); }
 .btn-secondary{ background: var(--teal); color:#fff; border-color: var(--teal); }
-.btn-secondary:hover{ background: var(--purple); }
+.btn-secondary:hover{ background: var(--purple); color: var(--white); }
 
